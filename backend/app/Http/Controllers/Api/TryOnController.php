@@ -147,14 +147,15 @@ class TryOnController extends Controller
         }
 
         $lastErr = null;
+        $forceUpload = false;
         for ($attempt = 1; $attempt <= 2; $attempt++) {
             try {
                 $seed = random_int(0, 1_000_000_000);
 
                 // Prefer passing URLs directly (no binary upload) when publicly reachable.
                 // Fall back to uploading bytes for localhost/private URLs.
-                $personPath = $this->resolveHfFilePath($personImageUrl, $headers);
-                $garmentPath = $this->resolveHfFilePath($garmentImageUrl, $headers);
+                $personPath = $forceUpload ? $this->uploadToHfSpace($personImageUrl, $headers) : $this->resolveHfFilePath($personImageUrl, $headers);
+                $garmentPath = $forceUpload ? $this->uploadToHfSpace($garmentImageUrl, $headers) : $this->resolveHfFilePath($garmentImageUrl, $headers);
 
                 $startResponse = Http::withHeaders($headers)
                     ->acceptJson()
@@ -203,9 +204,13 @@ class TryOnController extends Controller
                 return $resultUrl;
             } catch (\Throwable $e) {
                 $lastErr = $e;
-                // On transient HF errors (often `data: null`), retry once.
                 if ($attempt < 2) {
-                    usleep(800_000);
+                    // If the Space returns `event: error` with `data: null`, try again by forcing binary uploads.
+                    $msg = strtolower((string) $e->getMessage());
+                    if (! $forceUpload && (str_contains($msg, 'sse error') && (str_contains($msg, ': null') || str_contains($msg, 'data: null')))) {
+                        $forceUpload = true;
+                    }
+                    usleep(1_200_000);
                     continue;
                 }
             }
