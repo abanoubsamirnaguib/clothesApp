@@ -18,10 +18,11 @@ const search = () => {
 
 async function fetch() {
   try {
-    const response = await $fetch(useApiUrl('/api/search'), {
+    const response = await $fetch(useApiUrl('/api/products'), {
       query: { search: searchQuery.value },
     });
-    searchResults.value = response.products.nodes;
+    // Laravel returns a paginated resource collection: { data, meta, links }
+    searchResults.value = (response?.data || []).slice(0, 6);
   } finally {
     isLoading.value = false;
   }

@@ -228,8 +228,8 @@ Client (`$fetch` to `/api/*`) → Nitro server proxies to WPGraphQL → GET endp
 ## API Endpoints (Server)
 
 * `GET /api/products?search=&category=&orderby=DESC|ASC&fieldby=DATE|PRICE&after=...`
-* `GET /api/product?slug=:slug&sku=:skuFragment`
-* `GET /api/search?search=:q` (first 6)
+* `GET /api/products/:slug`
+* `GET /api/products?search=:q` (use first 6 for quick search)
 * `GET /api/categories`
 * `POST /api/cart/add` `{ productId }`
 * `POST /api/cart/update` `{ items: [{ key, quantity }] }`

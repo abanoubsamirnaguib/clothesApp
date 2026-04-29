@@ -24,9 +24,7 @@ const selectedVariation = ref(null);
 const relatedProducts = ref([]);
 
 onMounted(() => {
-  $fetch(useApiUrl('/api/product'), {
-    query: { slug: slug.value },
-  }).then(data => {
+  $fetch(useApiUrl(`/api/products/${encodeURIComponent(slug.value)}`)).then(data => {
     productResult.value = data.data;
     relatedProducts.value = data.related?.data || [];
   });

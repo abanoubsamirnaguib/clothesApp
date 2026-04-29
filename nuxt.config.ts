@@ -15,15 +15,25 @@ export default defineNuxtConfig({
     "@nuxt/image",
     "notivue/nuxt",
     "@nuxtjs/i18n",
+    "@nuxt/icon",
     ...(enableNuxtHub ? ["@nuxthub/core"] : []),
   ],
+
+  icon: {
+    // Static hosting (no Nitro server) => do not use `/api/_nuxt_icon`.
+    provider: "none",
+    serverBundle: false,
+    clientBundle: {
+      scan: true,
+    },
+  },
 
   i18n: {
     defaultLocale: "en",
     strategy: "prefix_except_default",
-    // Locale files live in `i18n/locales/*`.
-    dir: "i18n",
-    langDir: "locales",
+    // Bundle messages to avoid runtime lazy-loading failures on shared hosting.
+    lazy: false,
+    vueI18n: "./i18n.config.ts",
     detectBrowserLanguage: {
       useCookie: true,
       cookieKey: "i18n_redirected",
@@ -31,10 +41,10 @@ export default defineNuxtConfig({
       alwaysRedirect: true,
     },
     locales: [
-      { code: "en", iso: "en-GB", file: "en-GB.json", name: "🇬🇧 English" },
-      { code: "nb", iso: "nb-NO", file: "nb-NO.json", name: "🇳🇴 Norsk (Bokmål)" },
-      { code: "nl", iso: "nl-NL", file: "nl-NL.json", name: "🇳🇱 Nederlands" },
-      { code: "de", iso: "de-DE", file: "de-DE.json", name: "🇩🇪 Deutsch" },
+      { code: "en", iso: "en-GB", name: "🇬🇧 English" },
+      { code: "nb", iso: "nb-NO", name: "🇳🇴 Norsk (Bokmål)" },
+      { code: "nl", iso: "nl-NL", name: "🇳🇱 Nederlands" },
+      { code: "de", iso: "de-DE", name: "🇩🇪 Deutsch" },
     ],
   },
 
