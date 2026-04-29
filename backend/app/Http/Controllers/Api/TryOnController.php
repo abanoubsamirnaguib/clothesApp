@@ -69,14 +69,18 @@ class TryOnController extends Controller
             if ($parsed['type'] === 'error') {
                 $details = $parsed['error'] ?? null;
                 $suffix = is_string($details) && trim($details) !== '' ? (": {$details}") : '';
-                throw new \RuntimeException("Try-on failed (SSE error) from {$url}{$suffix}");
+                $rawSnippet = trim(mb_substr($raw, 0, 800));
+                $rawSuffix = $rawSnippet !== '' ? ("\n\nSSE snippet:\n" . $rawSnippet) : '';
+                throw new \RuntimeException("Try-on failed (SSE error) from {$url}{$suffix}{$rawSuffix}");
             }
 
             // Not complete yet (often just heartbeats). Wait briefly then retry.
             usleep(500_000);
         }
 
-        throw new \RuntimeException("No complete event found from {$url}");
+        $lastSnippet = isset($raw) ? trim(mb_substr((string) $raw, 0, 800)) : '';
+        $suffix = $lastSnippet !== '' ? ("\n\nLast SSE snippet:\n" . $lastSnippet) : '';
+        throw new \RuntimeException("No complete event found from {$url}{$suffix}");
     }
 
     /**
@@ -112,7 +116,10 @@ class TryOnController extends Controller
 
             if ($event === 'error') {
                 $text = trim(implode("\n", $dataLines));
-                return ['type' => 'error', 'error' => ($text !== '' ? $text : null)];
+                // Gradio sometimes sends `data: null`
+                $normalized = $text === '' ? null : $text;
+                if ($normalized === 'null') $normalized = 'null';
+                return ['type' => 'error', 'error' => $normalized];
             }
 
             if ($event === 'complete') {
@@ -139,57 +146,107 @@ class TryOnController extends Controller
             $headers['Authorization'] = "Bearer {$token}";
         }
 
-        $seed = random_int(0, 1_000_000_000);
+        $lastErr = null;
+        for ($attempt = 1; $attempt <= 2; $attempt++) {
+            try {
+                $seed = random_int(0, 1_000_000_000);
 
-        // Upload both images to the HF Space so it works on localhost/private domains.
-        $personTmpPath = $this->uploadToHfSpace($personImageUrl, $headers);
-        $garmentTmpPath = $this->uploadToHfSpace($garmentImageUrl, $headers);
+                // Prefer passing URLs directly (no binary upload) when publicly reachable.
+                // Fall back to uploading bytes for localhost/private URLs.
+                $personPath = $this->resolveHfFilePath($personImageUrl, $headers);
+                $garmentPath = $this->resolveHfFilePath($garmentImageUrl, $headers);
 
-        $startResponse = Http::withHeaders($headers)
-            ->acceptJson()
-            ->timeout(60)
-            ->withOptions(['allow_redirects' => true])
-            ->post("{$base}/call/tryon", [
-            'data' => [
-                [
-                    'background' => [
-                        'path' => $personTmpPath,
-                        'meta' => ['_type' => 'gradio.FileData'],
-                    ],
-                    'layers' => [],
-                    'composite' => null,
-                ],
-                [
-                    'path' => $garmentTmpPath,
-                    'meta' => ['_type' => 'gradio.FileData'],
-                ],
-                '',
-                true,
-                false,
-                30,
-                $seed,
-            ],
-            ]);
+                $startResponse = Http::withHeaders($headers)
+                    ->acceptJson()
+                    ->timeout(60)
+                    ->withOptions(['allow_redirects' => true])
+                    ->post("{$base}/call/tryon", [
+                        'data' => [
+                            [
+                                'background' => [
+                                    'path' => $personPath,
+                                    'meta' => ['_type' => 'gradio.FileData'],
+                                ],
+                                'layers' => [],
+                                'composite' => null,
+                            ],
+                            [
+                                'path' => $garmentPath,
+                                'meta' => ['_type' => 'gradio.FileData'],
+                            ],
+                            '',
+                            true,
+                            false,
+                            30,
+                            $seed,
+                        ],
+                    ]);
 
-        if (! $startResponse->successful()) {
-            throw new \RuntimeException("Failed to start try-on request ({$startResponse->status()}): {$startResponse->body()}");
+                if (! $startResponse->successful()) {
+                    throw new \RuntimeException("Failed to start try-on request ({$startResponse->status()}): {$startResponse->body()}");
+                }
+
+                $start = $startResponse->json();
+                if (! is_array($start) || ! isset($start['event_id'])) {
+                    throw new \RuntimeException('Failed to start try-on request (invalid JSON)');
+                }
+
+                $eventId = (string) $start['event_id'];
+                $result = $this->fetchSseCompleteJson("{$base}/call/tryon/{$eventId}", $headers, 180);
+
+                $output0 = $result[0] ?? null;
+                $resultUrl = is_array($output0) ? ($output0['url'] ?? null) : null;
+                if (! is_string($resultUrl) || trim($resultUrl) === '') {
+                    throw new \RuntimeException('Try-on returned no image URL');
+                }
+
+                return $resultUrl;
+            } catch (\Throwable $e) {
+                $lastErr = $e;
+                // On transient HF errors (often `data: null`), retry once.
+                if ($attempt < 2) {
+                    usleep(800_000);
+                    continue;
+                }
+            }
         }
 
-        $start = $startResponse->json();
-        if (! is_array($start) || ! isset($start['event_id'])) {
-            throw new \RuntimeException('Failed to start try-on request (invalid JSON)');
+        throw $lastErr ?? new \RuntimeException('Try-on failed');
+    }
+
+    private function resolveHfFilePath(string $sourceUrl, array $headers): string
+    {
+        // If the Space can fetch the URL itself, avoid uploading bytes.
+        if ($this->shouldPassUrlDirectly($sourceUrl)) {
+            return $sourceUrl;
         }
 
-        $eventId = (string) $start['event_id'];
-        $result = $this->fetchSseCompleteJson("{$base}/call/tryon/{$eventId}", $headers, 180);
+        return $this->uploadToHfSpace($sourceUrl, $headers);
+    }
 
-        $output0 = $result[0] ?? null;
-        $resultUrl = is_array($output0) ? ($output0['url'] ?? null) : null;
-        if (! is_string($resultUrl) || trim($resultUrl) === '') {
-            throw new \RuntimeException('Try-on returned no image URL');
+    private function shouldPassUrlDirectly(string $url): bool
+    {
+        $parts = parse_url($url);
+        if (! is_array($parts)) return false;
+
+        $scheme = strtolower((string) ($parts['scheme'] ?? ''));
+        $host = strtolower((string) ($parts['host'] ?? ''));
+
+        if ($scheme !== 'http' && $scheme !== 'https') return false;
+        if ($host === '' || $host === 'localhost') return false;
+        if (str_ends_with($host, '.local')) return false;
+
+        // Block private/internal IPs.
+        if (filter_var($host, FILTER_VALIDATE_IP)) {
+            if (filter_var($host, FILTER_VALIDATE_IP, FILTER_FLAG_NO_PRIV_RANGE | FILTER_FLAG_NO_RES_RANGE) === false) {
+                return false;
+            }
         }
 
-        return $resultUrl;
+        // Let operators force upload if needed.
+        if (env('HF_FORCE_UPLOAD', false)) return false;
+
+        return true;
     }
 
     private function uploadToHfSpace(string $sourceUrl, array $headers): string
