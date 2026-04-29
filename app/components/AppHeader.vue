@@ -9,10 +9,9 @@ const suggestionMenu = ref(false);
 const onClickOutsideRef = ref(null);
 const cartModal = ref(false);
 const { cart } = useCart();
-const localePath = useLocalePath();
 
 const search = () => {
-  router.push({ path: localePath('/'), query: { ...route.query, q: searchQuery.value || undefined } });
+  router.push({ path: '/', query: { ...route.query, q: searchQuery.value || undefined } });
   suggestionMenu.value = false;
 };
 
@@ -62,35 +61,35 @@ const totalQuantity = computed(() => cart.value.reduce((s, i) => s + (i.quantity
       <NuxtLink
         aria-label="Home"
         class="flex items-center justify-center min-w-[52px] min-h-[52px] max-lg:min-w-12 max-lg:min-h-12 hover:bg-black/5 hover:dark:bg-white/15 max-lg:dark:bg-white/15 max-lg:bg-black/5 max-lg:hover:bg-black/10 max-lg:hover:dark:bg-white/20 rounded-2xl max-lg:rounded-full transition active:scale-95"
-        :to="localePath('/')">
+        to="/">
         <img class="rounded-lg max-lg:rounded-full bg-[#b31015] w-8 h-8" src="/logo.svg" alt="Logo" loading="lazy" title="logo" />
       </NuxtLink>
       <NuxtLink
         aria-label="Categories"
         exactActiveClass="bg-black dark:bg-white text-white dark:text-black"
         class="font-semibold cursor-pointer px-4 rounded-full hover:bg-black hover:dark:bg-white h-12 items-center justify-center hover:text-white hover:dark:text-black transition active:scale-95 lg:flex hidden"
-        :to="localePath('/categories')">
-        {{ $t('nav.categories') }}
+        to="/categories">
+        Categories
       </NuxtLink>
       <NuxtLink
         aria-label="Favorites"
         exactActiveClass="bg-black dark:bg-white text-white dark:text-black"
         class="font-semibold cursor-pointer px-4 rounded-full hover:bg-black hover:dark:bg-white h-12 items-center justify-center hover:text-white hover:dark:text-black transition active:scale-95 lg:flex hidden"
-        :to="localePath('/favorites')">
-        {{ $t('nav.favorites') }}
+        to="/favorites">
+        Favorites
       </NuxtLink>
       <NuxtLink
         aria-label="Categories"
         exactActiveClass="!bg-black/10 dark:!bg-white/30"
         class="lg:hidden flex items-center justify-center min-w-12 min-h-12 rounded-full bg-black/5 dark:bg-white/15 hover:bg-black/10 hover:dark:bg-white/20 transition active:scale-95"
-        :to="localePath('/categories')">
+        to="/categories">
         <UIcon class="text-[#5f5f5f] dark:text-[#b7b7b7]" name="i-iconamoon-category-fill" size="26" />
       </NuxtLink>
       <NuxtLink
         aria-label="Favorites"
         exactActiveClass="!bg-black/10 dark:!bg-white/30"
         class="lg:hidden flex items-center justify-center min-w-12 min-h-12 rounded-full bg-black/5 dark:bg-white/15 hover:bg-black/10 hover:dark:bg-white/20 transition active:scale-95"
-        :to="localePath('/favorites')">
+        to="/favorites">
         <UIcon class="text-[#5f5f5f] dark:text-[#b7b7b7]" name="i-iconamoon-heart-fill" size="26" />
       </NuxtLink>
       <div class="flex flex-shrink flex-grow flex-col text-sm font-semibold text-[#111] dark:text-[#eee]">
@@ -109,7 +108,7 @@ const totalQuantity = computed(() => cart.value.reduce((s, i) => s + (i.quantity
                 type="text"
                 v-model="searchQuery"
                 @keyup.enter="search"
-                :placeholder="route.query.category ? $t('search.placeholder_in_category', { category: route.query.category }) : $t('search.placeholder')" />
+                :placeholder="route.query.category ? `Search in ${route.query.category}` : 'Search products'" />
               <div v-if="searchQuery || suggestionMenu" @click.stop="clearSearch" class="flex items-center justify-center cursor-pointer transition-all">
                 <UIcon v-if="!isLoading" class="text-black dark:text-white" name="i-iconamoon-close-circle-1-fill" size="24" />
                 <UIcon v-else name="i-svg-spinners-bars-rotate-fade" size="20" />
@@ -148,20 +147,20 @@ const totalQuantity = computed(() => cart.value.reduce((s, i) => s + (i.quantity
           <UIcon name="i-iconamoon-search-bold" class="w-16 h-16 dark:text-white" />
         </div>
         <div class="font-semibold text-3xl my-6">
-          {{ $t('search.no_results_for_query') }}
+          No results for
           <strong>{{ searchQuery }}</strong>
         </div>
         <div class="text-sm text-center mb-5 max-w-md">
-          {{ $t('search.no_results_suggestion') }}
+          Try checking your spelling, using fewer keywords, or searching for something else.
         </div>
       </div>
       <!-- Results State-->
       <div v-else class="mx-auto p-3 lg:p-4 max-w-screen-2xl">
-        <h2 v-if="!searchQuery" class="text-2xl font-bold tracking-tight">{{ $t('search.new_products') }}</h2>
+        <h2 v-if="!searchQuery" class="text-2xl font-bold tracking-tight">New products</h2>
         <div class="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3 lg:gap-5 mt-3 lg:mt-5">
           <NuxtLink
             @click="suggestionMenu = false"
-            :to="localePath(`/product/${product.slug}-${product.sku.split('-')[0]}`)"
+            :to="`/product/${product.slug}-${product.sku.split('-')[0]}`"
             v-for="(product, i) in searchResults"
             :key="i"
             class="group select-none">
@@ -195,7 +194,7 @@ const totalQuantity = computed(() => cart.value.reduce((s, i) => s + (i.quantity
         <button
           @click="search"
           class="bg-black/15 dark:bg-white/15 hover:bg-black/10 hover:dark:bg-white/20 px-4 py-2 rounded-full active:scale-95 tracking-wide text-sm transition">
-          {{ $t('search.view_all_results') }}
+          View all results
         </button>
       </div>
     </div>

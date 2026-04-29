@@ -1,7 +1,5 @@
 <!--app/components/ProductCard.vue-->
 <script setup>
-const localePath = useLocalePath();
-
 defineProps({
   products: Array,
 });
@@ -11,7 +9,7 @@ defineProps({
   <article v-for="product in products" :key="product?.databaseId || product?.slug">
     <NuxtLink
       v-if="product?.slug"
-      :to="localePath(`/product/${product.slug}`)"
+      :to="`/product/${product.slug}`"
       class="group select-none">
       <div class="cursor-pointer transition ease-[ease] duration-300">
         <div class="relative pb-[133%] dark:shadow-[0_8px_24px_rgba(0,0,0,.5)] rounded-2xl overflow-hidden">

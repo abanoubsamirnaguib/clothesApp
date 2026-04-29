@@ -8,9 +8,9 @@ const selectedSort = ref(
 );
 
 const options = reactive([
-  { value: 'Newest', label: $t('filter.newest') },
-  { value: 'Price: High to Low', label: $t('filter.price_high_low') },
-  { value: 'Price: Low to High', label: $t('filter.price_low_high') },
+  { value: 'Newest', label: 'Newest' },
+  { value: 'Price: High to Low', label: 'Price: High to Low' },
+  { value: 'Price: Low to High', label: 'Price: Low to High' },
 ]);
 
 const setSort = value => {

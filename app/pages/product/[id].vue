@@ -108,7 +108,7 @@ const { handleAddToCart, addToCartButtonStatus } = useCart();
 
           <div class="pb-4 px-3 lg:px-0 border-b border-[#efefef] dark:border-[#262626]">
             <div class="text-sm font-semibold leading-5 opacity-50 flex gap-1">
-              {{ $t('product.size') }}:
+              Size:
               <div class="uppercase">{{ selectedVariation }}</div>
             </div>
             <div class="flex gap-2 mt-2 mb-4 flex-wrap">
@@ -127,23 +127,22 @@ const { handleAddToCart, addToCartButtonStatus } = useCart();
                 :disabled="addToCartButtonStatus !== 'add' || !selectedVariation"
                 class="button-bezel w-full h-12 rounded-md relative tracking-wide font-semibold text-white text-sm flex justify-center items-center">
                 <Transition name="slide-up">
-                  <div v-if="addToCartButtonStatus === 'add'" class="absolute">{{ $t('cart.add_to_cart') }}</div>
+                  <div v-if="addToCartButtonStatus === 'add'" class="absolute">Add to cart</div>
                   <UIcon v-else-if="addToCartButtonStatus === 'loading'" class="absolute" name="i-svg-spinners-90-ring-with-bg" size="22" />
-                  <div v-else-if="addToCartButtonStatus === 'added'" class="absolute">{{ $t('cart.added_to_cart') }}!</div>
+                  <div v-else-if="addToCartButtonStatus === 'added'" class="absolute">Added to cart!</div>
                 </Transition>
               </button>
               <ButtonWishlist :product="product" />
             </div>
           </div>
           <div class="px-3 lg:px-0">
-            <div class="text-base mb-2 font-semibold">{{ $t('product.featured_information') }}</div>
+            <div class="text-base mb-2 font-semibold">Featured information</div>
             <div class="description leading-7 text-sm">
               <ul>
                 <li>
-                  {{ $t('product.free_return') }}
-                  <a class="underline" href="#">{{ $t('product.information') }}</a>
+                  Free returns. <a class="underline" href="#">More information</a>
                 </li>
-                <li>{{ $t('product.sku') }}: {{ product.sku }}</li>
+                <li>SKU: {{ product.sku }}</li>
                 <div v-html="product.description"></div>
               </ul>
             </div>
@@ -154,7 +153,7 @@ const { handleAddToCart, addToCartButtonStatus } = useCart();
       </div>
     </div>
   </div>
-  <div class="text-lg lg:text-xl lg:text-center font-semibold mt-4 pt-4 px-3 border-t border-[#efefef] dark:border-[#262626] lg:border-none">{{ $t('product.shop_similar') }}</div>
+  <div class="text-lg lg:text-xl lg:text-center font-semibold mt-4 pt-4 px-3 border-t border-[#efefef] dark:border-[#262626] lg:border-none">Shop similar</div>
   <div class="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 3xl:grid-cols-7 gap-4 px-3 lg:px-5 xl:px-8 mt-4 lg:mt-5">
     <ProductCard :products="relatedProducts" />
     <ProductsSkeleton v-if="!product?.name" />

@@ -14,7 +14,6 @@ export default defineNuxtConfig({
     "@nuxt/ui",
     "@nuxt/image",
     "notivue/nuxt",
-    "@nuxtjs/i18n",
     "@nuxt/icon",
     ...(enableNuxtHub ? ["@nuxthub/core"] : []),
   ],
@@ -26,28 +25,6 @@ export default defineNuxtConfig({
     clientBundle: {
       scan: true,
     },
-  },
-
-  i18n: {
-    defaultLocale: "en",
-    fallbackLocale: "en",
-    strategy: "prefix_except_default",
-    // Bundle messages to avoid runtime lazy-loading failures on shared hosting.
-    lazy: false,
-    vueI18n: "./i18n.config.ts",
-    detectBrowserLanguage: {
-      useCookie: true,
-      cookieKey: "i18n_redirected",
-      redirectOn: "root",
-      alwaysRedirect: true,
-      fallbackLocale: "en",
-    },
-    locales: [
-      { code: "en", iso: "en-GB", name: "🇬🇧 English" },
-      { code: "nb", iso: "nb-NO", name: "🇳🇴 Norsk (Bokmål)" },
-      { code: "nl", iso: "nl-NL", name: "🇳🇱 Nederlands" },
-      { code: "de", iso: "de-DE", name: "🇩🇪 Deutsch" },
-    ],
   },
 
   notivue: {

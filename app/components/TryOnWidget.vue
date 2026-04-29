@@ -6,6 +6,8 @@ const props = defineProps({
   productName: { type: String, default: '' },
 });
 
+const userKey = useTryOnUserKey();
+
 const file = ref(null);
 const isLoading = ref(false);
 const isPopupOpen = computed(() => isLoading.value);
@@ -17,7 +19,7 @@ const errorMsg = ref(null);
 const fetchResult = async () => {
   try {
     const res = await $fetch(useApiUrl('/api/tryon/result'), {
-      query: { product_id: String(props.productId) },
+      query: { product_id: String(props.productId), user_key: userKey },
     });
     if (res?.status === 'completed' && res?.result_image_url) {
       resultUrl.value = res.result_image_url;
@@ -33,7 +35,7 @@ const fetchResult = async () => {
 const fetchEligibility = async () => {
   try {
     eligibility.value = await $fetch(useApiUrl('/api/tryon/eligibility'), {
-      query: { product_id: String(props.productId) },
+      query: { product_id: String(props.productId), user_key: userKey },
     });
   } catch (e) {
     // If this fails, don't block UI.
@@ -67,6 +69,7 @@ const runTryOn = async () => {
   try {
     const fd = new FormData();
     fd.set('product_id', String(props.productId));
+    fd.set('user_key', userKey);
     fd.set('person_image', file.value);
 
     const res = await $fetch(useApiUrl('/api/tryon'), { method: 'POST', body: fd });
@@ -130,7 +133,7 @@ const runTryOn = async () => {
         :disabled="isLoading || !eligibility.allowed"
         @click="runTryOn">
         <span v-if="!isLoading && eligibility.allowed">Try it on</span>
-        <span v-else-if="!eligibility.allowed">Already tried</span>
+        <span v-else-if="!eligibility.allowed">Already tried today</span>
         <span v-else>Generating…</span>
       </button>
 

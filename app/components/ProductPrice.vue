@@ -41,10 +41,10 @@ const discountPercentage = computed(() => {
       <div v-if="isSale">
         <div class="flex items-baseline">
           <p class="text-xl font-bold text-alizarin-crimson-700" v-html="salePrice"></p>
-          <p class="text-sm ml-2">{{ $t('product.vat_included') }}</p>
+          <p class="text-sm ml-2">VAT included</p>
         </div>
         <div class="flex items-baseline">
-          <p class="text-sm">{{ $t('product.originally') }}:</p>
+          <p class="text-sm">Originally:</p>
           <p class="text-sm ml-1 line-through" v-html="regularPrice"></p>
           <p class="text-sm ml-1 text-alizarin-crimson-700">-{{ discountPercentage }}%</p>
         </div>
@@ -52,7 +52,7 @@ const discountPercentage = computed(() => {
       <div v-else>
         <div class="flex items-baseline">
           <p class="text-xl font-bold" v-html="regularPrice"></p>
-          <p class="text-sm ml-2">{{ $t('product.vat_included') }}</p>
+          <p class="text-sm ml-2">VAT included</p>
         </div>
       </div>
     </div>
@@ -71,7 +71,7 @@ const discountPercentage = computed(() => {
       <div v-if="isSale" class="gap-1 flex flex-col">
         <div class="font-bold">${{ totalSalePrice.toFixed(2) }}</div>
         <div class="flex-wrap text-neutral-600 dark:text-neutral-300 items-baseline text-xs gap-1 flex-row flex">
-          <p>{{ $t('product.originally') }}:</p>
+          <p>Originally:</p>
           <p class="line-through">${{ totalRegularPrice.toFixed(2) }}</p>
           <p class="text-alizarin-crimson-700">-{{ discountPercentage }}%</p>
         </div>

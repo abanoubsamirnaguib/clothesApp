@@ -74,7 +74,7 @@ onBeforeUnmount(() => {
             'card ml-2 lg:ml-4 transition',
             !route.query.category ? 'selected' : 'bg-[#efefef] hover:bg-[#e2e2e2] dark:bg-[#262626] hover:dark:bg-[#333] text-black dark:text-white',
           ]">
-          <div class="px-3.5">{{ $t('filter.all_categories') }}</div>
+          <div class="px-3.5">All categories</div>
         </div>
         <div
           v-for="(category, i) in categories"

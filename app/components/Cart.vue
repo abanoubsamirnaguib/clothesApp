@@ -20,7 +20,7 @@ const { cart, increment, decrement } = useCart();
                 <ProductPrice :sale-price="product.salePrice" :regular-price="product.regularPrice" :quantity="product.quantity" variant="cart" />
                 <div class="text-xs flex gap-2 font-medium text-neutral-600 dark:text-neutral-300">
                   <div>
-                    {{ $t('product.size') }}: {{ product.size || '-' }} • {{ $t('product.quantity') }}:
+                    Size: {{ product.size || '-' }} • Quantity:
                     {{ product.quantity }}
                   </div>
                 </div>

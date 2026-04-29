@@ -22,8 +22,6 @@ const siteName: string = site?.name || 'NuxtCommerce';
 
 const route = useRoute();
 const url = useRequestURL();
-const { locales, locale } = useI18n();
-const localePath = useLocalePath();
 
 const canonical = `${url.origin}${url.pathname}`;
 
@@ -37,17 +35,6 @@ const twitterImage = absolutize(twSrc);
 
 const rawDescription = props.info.shortDescription && stripHtml(props.info.shortDescription) ? stripHtml(props.info.shortDescription) : stripHtml(props.info.description);
 const description = rawDescription?.slice(0, 160) || '';
-
-const alternates = computed(() => {
-  const items: Array<{ href: string; hreflang: string }> = [];
-  const codes = (locales.value as any[]).map(l => ({ code: l.code, iso: l.iso }));
-  for (const l of codes) {
-    const localizedPath = localePath(route.fullPath, l.code);
-    items.push({ href: `${url.origin}${localizedPath}`, hreflang: l.iso || l.code });
-  }
-  items.push({ href: `${url.origin}${localePath(route.fullPath, locale.value)}`, hreflang: 'x-default' });
-  return items;
-});
 
 const productSchema = computed(() => {
   const images = [ogImage].filter(Boolean);
@@ -78,8 +65,8 @@ useSeoMeta({
 });
 
 useHead({
-  htmlAttrs: { lang: locale.value },
-  link: [{ rel: 'canonical', href: canonical }, ...alternates.value.map(a => ({ rel: 'alternate', href: a.href, hreflang: a.hreflang }))],
+  htmlAttrs: { lang: 'en' },
+  link: [{ rel: 'canonical', href: canonical }],
   script: [{ type: 'application/ld+json', innerHTML: JSON.stringify(productSchema.value) }],
 });
 </script>

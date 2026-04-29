@@ -16,6 +16,7 @@ Route::post('/discounts/validate', [DiscountController::class, 'validateCode']);
 
 Route::get('/tryon/eligibility', [TryOnController::class, 'eligibility']);
 Route::get('/tryon/result', [TryOnController::class, 'result']);
+Route::post('/tryon', [TryOnController::class, 'tryOn']);
 Route::post('/tryon/reserve', [TryOnController::class, 'reserve']);
 Route::post('/tryon/complete', [TryOnController::class, 'complete']);
 Route::get('/tryon/products/{productId}/best-image', [TryOnController::class, 'bestGarmentImage']);

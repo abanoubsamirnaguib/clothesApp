@@ -23,25 +23,20 @@ const cartTotal = computed(() => {
           <input required v-model="userDetails.name" placeholder="Full name" name="name" type="text" />
         </div>
         <div class="col-span-1">
-          <input required v-model="userDetails.phone" :placeholder="$t('checkout.form.phone')" name="phone" type="text" />
+          <input required v-model="userDetails.phone" placeholder="Phone number" name="phone" type="text" />
         </div>
         <div class="col-span-1">
           <input v-model="userDetails.discountCode" placeholder="Discount code" name="discount-code" type="text" />
         </div>
         <div class="col-span-full">
-          <textarea required v-model="userDetails.address" :placeholder="$t('checkout.form.address')" name="address" rows="2"></textarea>
+          <textarea required v-model="userDetails.address" placeholder="Address" name="address" rows="2"></textarea>
         </div>
         <div class="col-span-full">
           <textarea v-model="userDetails.notes" placeholder="Order notes" name="notes" rows="2"></textarea>
         </div>
       </div>
       <div class="text-sm font-semibold p-4 text-neutral-600 dark:text-neutral-400">
-        {{
-          $t('checkout.pay.description', {
-            total: cartTotal,
-            items: totalQuantity,
-          })
-        }}
+        You’re about to place an order for {{ totalQuantity }} item(s), total ${{ cartTotal }}.
       </div>
       <button
         type="submit"
@@ -49,11 +44,7 @@ const cartTotal = computed(() => {
         class="pay-button-bezel w-full h-12 rounded-xl relative font-semibold text-white dark:text-black text-lg flex justify-center items-center">
         <Transition name="slide-up">
           <div v-if="checkoutStatus === 'order'" class="absolute">
-            {{
-              $t('checkout.pay.btn', {
-                  total: `$${cartTotal}`,
-              })
-            }}
+            Pay ${{ cartTotal }}
           </div>
           <UIcon v-else-if="checkoutStatus === 'processing'" class="absolute" name="i-svg-spinners-90-ring-with-bg" size="22" />
         </Transition>

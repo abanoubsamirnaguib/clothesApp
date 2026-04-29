@@ -8,7 +8,7 @@
 
 <p align="center">
   Modern, open-source headless storefront for WooCommerce — built with <strong>Nuxt 4</strong> & <strong>GraphQL</strong>.<br/>
-  Pinterest-style UI, dark mode, multi-language, and a DX focused, production-ready setup.
+  Pinterest-style UI, dark mode, and a DX focused, production-ready setup.
   <br/><br/>
   <a href="https://commerce.nuxt.dev"><strong>🚀 Live Demo</strong></a>
   <br/><br/>
@@ -28,7 +28,6 @@
 * [WordPress + WooCommerce + WPGraphQL Setup](#wordpress--woocommerce--wpgraphql-setup)
 * [Architecture Overview](#architecture-overview)
 * [API Endpoints (Server)](#api-endpoints-server)
-* [Internationalization (i18n)](#internationalization-i18n)
 * [Performance & Caching](#performance--caching)
 * [Contributors & Acknowledgements](#-contributors--acknowledgements)
 * [Contact](#contact)
@@ -41,7 +40,6 @@
 * 🛒 **Cart & Checkout** (WooCommerce session cookie handled server-side)
 * ❤️ **Wishlist** (localStorage) & **Favorites** page
 * 🌙 **Dark mode** + sleek micro-interactions (skeletons, transitions)
-* 🌐 **Multi-language** (en, nb, nl, de) via `@nuxtjs/i18n`
 * 🖼️ Optimized images with `@nuxt/image`
 * 🔔 Friendly toasts with **Notivue**
 * 🔎 Good **SEO defaults** + **JSON-LD Product schema**
@@ -53,7 +51,6 @@
 * **GraphQL Client (server):** `graphql-request` (`GraphQLClient` + `gql`)
 * **Styling/UI:** Tailwind CSS, `@nuxt/ui`, Icons (Iconify)
 * **Images:** `@nuxt/image`
-* **i18n:** `@nuxtjs/i18n`
 * **Toasts:** `notivue`
 * **Deployment (optional):** NuxtHub + Cloudflare Workers
 
@@ -105,7 +102,7 @@ pnpm run preview
 Key settings are in **`nuxt.config.ts`**:
 
 * **Runtime Config:** `runtimeConfig.gqlHost` (reads `GQL_HOST`)
-* **Modules:** `@nuxt/ui`, `@nuxt/image`, `@nuxtjs/i18n`, `notivue/nuxt`, `@nuxthub/core`
+* **Modules:** `@nuxt/ui`, `@nuxt/image`, `notivue/nuxt`, `@nuxthub/core`
 * **Route Rules:** SWR caching for `/categories` and `/favorites`, prerender for `/`
 * **Nitro Prerender:** `/sitemap.xml`, `/robots.txt`
 * **NuxtHub Cache:** `hub: { cache: true }` (optional KV cache)
@@ -235,11 +232,9 @@ Client (`$fetch` to `/api/*`) → Nitro server proxies to WPGraphQL → GET endp
 * `POST /api/cart/update` `{ items: [{ key, quantity }] }`
 * `POST /api/checkout` `{ billing: {...}, paymentMethod: 'cod' }`
 
-## Internationalization (i18n)
+## Language
 
-* Locales: **en-GB**, **nb-NO**, **nl-NL**, **de-DE**
-* Default: **en**
-* Use `useLocalePath()` for links; SEO tags adapt per route.
+This project is currently **English-only**.
 
 ## Performance & Caching
 
