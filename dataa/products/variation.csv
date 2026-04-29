@@ -1,0 +1,221 @@
+Type,Parent,SKU,Name,Stock,Sale price,Regular price,Attribute 1 name,Attribute 1 value(s),Attribute 1 global
+variation,3243314-712,6463552111681,Rustic gathered top ecru,1,27.9,35.9,Size,XS,1
+variation,3243314-712,7724860455770,Rustic gathered top ecru,1,27.9,35.9,Size,S,1
+variation,3243314-712,7020790339293,Rustic gathered top ecru,1,27.9,35.9,Size,M,1
+variation,3243314-712,2617717480233,Rustic gathered top ecru,1,27.9,35.9,Size,L,1
+variation,3243314-712,7995944145160,Rustic gathered top ecru,1,27.9,35.9,Size,XL,1
+variation,3243314-450,5573669775276,Rustic gathered top beige,1,27.9,35.9,Size,XS,1
+variation,3243314-450,5635387948225,Rustic gathered top beige,1,27.9,35.9,Size,S,1
+variation,3243314-450,5429526789082,Rustic gathered top beige,1,27.9,35.9,Size,M,1
+variation,3243314-450,2919268239912,Rustic gathered top beige,1,27.9,35.9,Size,L,1
+variation,3243314-450,9161514446097,Rustic gathered top beige,1,27.9,35.9,Size,XL,1
+variation,3243314-505,9306642031194,Rustic gathered top khaki,1,27.9,35.9,Size,XS,1
+variation,3243314-505,9305004763649,Rustic gathered top khaki,1,27.9,35.9,Size,S,1
+variation,3243314-505,4735345374701,Rustic gathered top khaki,1,27.9,35.9,Size,M,1
+variation,3243314-505,9472349809209,Rustic gathered top khaki,1,27.9,35.9,Size,L,1
+variation,3243314-505,1238423086332,Rustic gathered top khaki,1,27.9,35.9,Size,XL,1
+variation,3470353-527,2881714097180,Rustic crossed blouse medium green,1,25.9,39.9,Size,XS,1
+variation,3470353-527,6186190026658,Rustic crossed blouse medium green,1,25.9,39.9,Size,S,1
+variation,3470353-527,6944003668704,Rustic crossed blouse medium green,1,25.9,39.9,Size,M,1
+variation,3470353-527,3762929905116,Rustic crossed blouse medium green,1,25.9,39.9,Size,L,1
+variation,3470353-527,4313259380203,Rustic crossed blouse medium green,1,25.9,39.9,Size,XL,1
+variation,3590311-681,4810564886493,Chicago hoodie burgundy,1,17.9,45.9,Size,XS,1
+variation,3590311-681,7984122342195,Chicago hoodie burgundy,1,17.9,45.9,Size,S,1
+variation,3590311-681,2493125336752,Chicago hoodie burgundy,1,17.9,45.9,Size,M,1
+variation,3590311-681,4498795887234,Chicago hoodie burgundy,1,17.9,45.9,Size,L,1
+variation,3590311-681,8354573071736,Chicago hoodie burgundy,1,17.9,45.9,Size,XL,1
+variation,3678329-250,3724829029579,Flowy pants with linen white,1,35.9,47.9,Size,XS,1
+variation,3678329-250,2760691036109,Flowy pants with linen white,1,35.9,47.9,Size,S,1
+variation,3678329-250,7634508689024,Flowy pants with linen white,1,35.9,47.9,Size,M,1
+variation,3678329-250,7724924929926,Flowy pants with linen white,1,35.9,47.9,Size,L,1
+variation,3678329-250,9827410804135,Flowy pants with linen white,1,35.9,47.9,Size,XL,1
+variation,3678329-800,9924378262123,Flowy pants with linen black,1,35.9,47.9,Size,XS,1
+variation,3678329-800,9353401695505,Flowy pants with linen black,1,35.9,47.9,Size,S,1
+variation,3678329-800,9459148673490,Flowy pants with linen black,1,35.9,47.9,Size,M,1
+variation,3678329-800,2549196518787,Flowy pants with linen black,1,35.9,47.9,Size,L,1
+variation,3678329-800,5709895304076,Flowy pants with linen black,1,35.9,47.9,Size,XL,1
+variation,3678329-832,7404985988752,Flowy pants with linen taupe,1,35.9,47.9,Size,XS,1
+variation,3678329-832,5217779953208,Flowy pants with linen taupe,1,35.9,47.9,Size,S,1
+variation,3678329-832,8736468529596,Flowy pants with linen taupe,1,35.9,47.9,Size,M,1
+variation,3678329-832,3603941128412,Flowy pants with linen taupe,1,35.9,47.9,Size,L,1
+variation,3678329-832,5758562528552,Flowy pants with linen taupe,1,35.9,47.9,Size,XL,1
+variation,3678329-600,7616527280144,Flowy pants with linen red,1,35.9,47.9,Size,XS,1
+variation,3678329-600,4984239109758,Flowy pants with linen red,1,35.9,47.9,Size,S,1
+variation,3678329-600,6613390642447,Flowy pants with linen red,1,35.9,47.9,Size,M,1
+variation,3678329-600,2463673381746,Flowy pants with linen red,1,35.9,47.9,Size,L,1
+variation,3678329-600,6471847572958,Flowy pants with linen red,1,35.9,47.9,Size,XL,1
+variation,3678329-620,2282342486307,Flowy pants with linen pink,1,35.9,47.9,Size,XS,1
+variation,3678329-620,7158942615335,Flowy pants with linen pink,1,35.9,47.9,Size,S,1
+variation,3678329-620,2369789347630,Flowy pants with linen pink,1,35.9,47.9,Size,M,1
+variation,3678329-620,1386463903088,Flowy pants with linen pink,1,35.9,47.9,Size,L,1
+variation,3678329-620,3320650995638,Flowy pants with linen pink,1,35.9,47.9,Size,XL,1
+variation,4471308-155,6181701763232,Rustic Oversized Shirt grey/blue,1,25.9,39.9,Size,XS,1
+variation,4471308-155,4509018353071,Rustic Oversized Shirt grey/blue,1,25.9,39.9,Size,S,1
+variation,4471308-155,8883413644056,Rustic Oversized Shirt grey/blue,1,25.9,39.9,Size,M,1
+variation,4471308-155,4014749163285,Rustic Oversized Shirt grey/blue,1,25.9,39.9,Size,L,1
+variation,4471308-155,3378466964580,Rustic Oversized Shirt grey/blue,1,25.9,39.9,Size,XL,1
+variation,4471308-620,1255500012334,Rustic Oversized Shirt pink,1,25.9,39.9,Size,XS,1
+variation,4471308-620,4946746385866,Rustic Oversized Shirt pink,1,25.9,39.9,Size,S,1
+variation,4471308-620,7429355730011,Rustic Oversized Shirt pink,1,25.9,39.9,Size,M,1
+variation,4471308-620,2818986763161,Rustic Oversized Shirt pink,1,25.9,39.9,Size,L,1
+variation,4471308-620,5471987031740,Rustic Oversized Shirt pink,1,25.9,39.9,Size,XL,1
+variation,4471308-600,6862547735363,Rustic Oversized Shirt red,1,25.9,39.9,Size,XS,1
+variation,4471308-600,1326085804433,Rustic Oversized Shirt red,1,25.9,39.9,Size,S,1
+variation,4471308-600,5409866084921,Rustic Oversized Shirt red,1,25.9,39.9,Size,M,1
+variation,4471308-600,3946557075012,Rustic Oversized Shirt red,1,25.9,39.9,Size,L,1
+variation,4471308-600,2031251221313,Rustic Oversized Shirt red,1,25.9,39.9,Size,XL,1
+variation,4471308-700,8867173384323,Rustic Oversized Shirt brown,1,25.9,39.9,Size,XS,1
+variation,4471308-700,5943437787937,Rustic Oversized Shirt brown,1,25.9,39.9,Size,S,1
+variation,4471308-700,9645872004467,Rustic Oversized Shirt brown,1,25.9,39.9,Size,M,1
+variation,4471308-700,7640417414851,Rustic Oversized Shirt brown,1,25.9,39.9,Size,L,1
+variation,4471308-700,2135450453387,Rustic Oversized Shirt brown,1,25.9,39.9,Size,XL,1
+variation,7234380-671,4615193536268,Gathered lace camisole top raspberry,1,27.9,35.9,Size,XS,1
+variation,7234380-671,9605056484671,Gathered lace camisole top raspberry,1,27.9,35.9,Size,S,1
+variation,7234380-671,3361290291515,Gathered lace camisole top raspberry,1,27.9,35.9,Size,M,1
+variation,7234380-671,6941871798056,Gathered lace camisole top raspberry,1,27.9,35.9,Size,L,1
+variation,7234380-671,9744104811951,Gathered lace camisole top raspberry,1,27.9,35.9,Size,XL,1
+variation,7244362-428,4252228771323,T-shirt with cowboy and heart graphic faded blue,1,35.9,47.9,Size,XS,1
+variation,7244362-428,6038316529803,T-shirt with cowboy and heart graphic faded blue,1,35.9,47.9,Size,S,1
+variation,7244362-428,2126035804906,T-shirt with cowboy and heart graphic faded blue,1,35.9,47.9,Size,M,1
+variation,7244362-428,1657954916452,T-shirt with cowboy and heart graphic faded blue,1,35.9,47.9,Size,L,1
+variation,7244362-428,5314494936095,T-shirt with cowboy and heart graphic faded blue,1,35.9,47.9,Size,XL,1
+variation,7244374-120,5500785737697,Printed tulle halter top print,1,29.9,39.9,Size,XS,1
+variation,7244374-120,2782394286052,Printed tulle halter top print,1,29.9,39.9,Size,S,1
+variation,7244374-120,7297144025190,Printed tulle halter top print,1,29.9,39.9,Size,M,1
+variation,7244374-120,5479901910274,Printed tulle halter top print,1,29.9,39.9,Size,L,1
+variation,7244374-120,8419169239948,Printed tulle halter top print,1,29.9,39.9,Size,XL,1
+variation,7244374-115,7505241942437,Printed tulle halter top zebra,1,29.9,39.9,Size,XS,1
+variation,7244374-115,2629482712694,Printed tulle halter top zebra,1,29.9,39.9,Size,S,1
+variation,7244374-115,2677453711230,Printed tulle halter top zebra,1,29.9,39.9,Size,M,1
+variation,7244374-115,7727449380164,Printed tulle halter top zebra,1,29.9,39.9,Size,L,1
+variation,7244374-115,6931329177556,Printed tulle halter top zebra,1,29.9,39.9,Size,XL,1
+variation,7244383-406,9526761673898,Striped short sleeve T-shirt pale blue,1,17.9,45.9,Size,XS,1
+variation,7244383-406,5762818994107,Striped short sleeve T-shirt pale blue,1,17.9,45.9,Size,S,1
+variation,7244383-406,6476319821537,Striped short sleeve T-shirt pale blue,1,17.9,45.9,Size,M,1
+variation,7244383-406,9928989987003,Striped short sleeve T-shirt pale blue,1,17.9,45.9,Size,L,1
+variation,7244383-406,3526285270864,Striped short sleeve T-shirt pale blue,1,17.9,45.9,Size,XL,1
+variation,7244383-700,4678459712441,Striped short sleeve T-shirt brown,1,17.9,45.9,Size,XS,1
+variation,7244383-700,4730127066899,Striped short sleeve T-shirt brown,1,17.9,45.9,Size,S,1
+variation,7244383-700,3291046047055,Striped short sleeve T-shirt brown,1,17.9,45.9,Size,M,1
+variation,7244383-700,3252688720887,Striped short sleeve T-shirt brown,1,17.9,45.9,Size,L,1
+variation,7244383-700,3687621713998,Striped short sleeve T-shirt brown,1,17.9,45.9,Size,XL,1
+variation,7390375-400,7589966992022,Strappy crepe midi dress blue,1,39.9,53.9,Size,XS,1
+variation,7390375-400,7643273848579,Strappy crepe midi dress blue,1,39.9,53.9,Size,S,1
+variation,7390375-400,4024652327770,Strappy crepe midi dress blue,1,39.9,53.9,Size,M,1
+variation,7390375-400,6905623266800,Strappy crepe midi dress blue,1,39.9,53.9,Size,L,1
+variation,7390375-400,9521763672087,Strappy crepe midi dress blue,1,39.9,53.9,Size,XL,1
+variation,7390375-736,1403582958313,Strappy crepe midi dress pale mink,1,39.9,53.9,Size,XS,1
+variation,7390375-736,1845099365723,Strappy crepe midi dress pale mink,1,39.9,53.9,Size,S,1
+variation,7390375-736,2704454794765,Strappy crepe midi dress pale mink,1,39.9,53.9,Size,M,1
+variation,7390375-736,3771979074917,Strappy crepe midi dress pale mink,1,39.9,53.9,Size,L,1
+variation,7390375-736,9427150373934,Strappy crepe midi dress pale mink,1,39.9,53.9,Size,XL,1
+variation,7390375-518,2317776923592,Strappy crepe midi dress bluish green,1,39.9,53.9,Size,XS,1
+variation,7390375-518,4105038098897,Strappy crepe midi dress bluish green,1,39.9,53.9,Size,S,1
+variation,7390375-518,7389700140752,Strappy crepe midi dress bluish green,1,39.9,53.9,Size,M,1
+variation,7390375-518,7601479274922,Strappy crepe midi dress bluish green,1,39.9,53.9,Size,L,1
+variation,7390375-518,9573215858153,Strappy crepe midi dress bluish green,1,39.9,53.9,Size,XL,1
+variation,7390394-250,5280045484556,Short floral lace dress white,1,22.9,45.9,Size,XS,1
+variation,7390394-250,4386730628828,Short floral lace dress white,1,22.9,45.9,Size,S,1
+variation,7390394-250,4076104927157,Short floral lace dress white,1,22.9,45.9,Size,M,1
+variation,7390394-250,8786399118321,Short floral lace dress white,1,22.9,45.9,Size,L,1
+variation,7390394-250,1355054750577,Short floral lace dress white,1,22.9,45.9,Size,XL,1
+variation,7396338-400,2259336425170,Striped balloon mini skirt blue,1,25.9,39.9,Size,XS,1
+variation,7396338-400,4229776269849,Striped balloon mini skirt blue,1,25.9,39.9,Size,S,1
+variation,7396338-400,7482530199554,Striped balloon mini skirt blue,1,25.9,39.9,Size,M,1
+variation,7396338-400,7205606502231,Striped balloon mini skirt blue,1,25.9,39.9,Size,L,1
+variation,7396338-400,5891252577101,Striped balloon mini skirt blue,1,25.9,39.9,Size,XL,1
+variation,7570302-600,5197305333367,Purl knit vest red,1,35.9,47.9,Size,XS,1
+variation,7570302-600,8444922457933,Purl knit vest red,1,35.9,47.9,Size,S,1
+variation,7570302-600,4808510520544,Purl knit vest red,1,35.9,47.9,Size,M,1
+variation,7570302-600,9750939963312,Purl knit vest red,1,35.9,47.9,Size,L,1
+variation,7570302-800,2158277123454,Purl knit vest black,1,35.9,47.9,Size,XS,1
+variation,7570302-800,4822090569632,Purl knit vest black,1,35.9,47.9,Size,S,1
+variation,7570302-800,2311903882565,Purl knit vest black,1,35.9,47.9,Size,M,1
+variation,7570302-800,1165259939822,Purl knit vest black,1,35.9,47.9,Size,L,1
+variation,7570302-506,4671677378509,Purl knit vest pale khaki,1,35.9,47.9,Size,XS,1
+variation,7570302-506,2259978653668,Purl knit vest pale khaki,1,35.9,47.9,Size,S,1
+variation,7570302-506,4904717334402,Purl knit vest pale khaki,1,35.9,47.9,Size,M,1
+variation,7570302-506,6411824843913,Purl knit vest pale khaki,1,35.9,47.9,Size,L,1
+variation,7593335-811,2416217218050,Faded sweatshirt pale grey,1,17.9,35.9,Size,XXS,1
+variation,7593335-811,6536966626081,Faded sweatshirt pale grey,1,17.9,35.9,Size,XS,1
+variation,7593335-811,6905320087887,Faded sweatshirt pale grey,1,17.9,35.9,Size,S,1
+variation,7593335-811,8193557036285,Faded sweatshirt pale grey,1,17.9,35.9,Size,M,1
+variation,7593335-811,7009944341273,Faded sweatshirt pale grey,1,17.9,35.9,Size,L,1
+variation,7593335-811,7494524825904,Faded sweatshirt pale grey,1,17.9,35.9,Size,XL,1
+variation,7593335-405,6944333852913,Faded sweatshirt ındigo,1,17.9,35.9,Size,XXS,1
+variation,7593335-405,4256909873033,Faded sweatshirt ındigo,1,17.9,35.9,Size,XS,1
+variation,7593335-405,8513770390900,Faded sweatshirt ındigo,1,17.9,35.9,Size,S,1
+variation,7593335-405,4206632527694,Faded sweatshirt ındigo,1,17.9,35.9,Size,M,1
+variation,7593335-405,4293132196350,Faded sweatshirt ındigo,1,17.9,35.9,Size,L,1
+variation,7593335-405,5966280636994,Faded sweatshirt ındigo,1,17.9,35.9,Size,XL,1
+variation,7593335-506,3553696136009,Faded sweatshirt pale khaki,1,17.9,35.9,Size,XXS,1
+variation,7593335-506,2711388961674,Faded sweatshirt pale khaki,1,17.9,35.9,Size,XS,1
+variation,7593335-506,9425704590159,Faded sweatshirt pale khaki,1,17.9,35.9,Size,S,1
+variation,7593335-506,4871975140174,Faded sweatshirt pale khaki,1,17.9,35.9,Size,M,1
+variation,7593335-506,4371955800333,Faded sweatshirt pale khaki,1,17.9,35.9,Size,L,1
+variation,7593335-506,4746135537505,Faded sweatshirt pale khaki,1,17.9,35.9,Size,XL,1
+variation,7640311-711,4504790982787,Crochet jumpsuit sand,1,45.9,65.9,Size,S,1
+variation,7640311-711,9397141088848,Crochet jumpsuit sand,1,45.9,65.9,Size,M,1
+variation,7640311-711,6705359146388,Crochet jumpsuit sand,1,45.9,65.9,Size,L,1
+variation,7686330-807,6490506185518,Basic mom jeans anthracite grey,1,22.9,35.9,Size,23-24,1
+variation,7686330-807,1747785336544,Basic mom jeans anthracite grey,1,22.9,35.9,Size,25,1
+variation,7686330-807,9028180810615,Basic mom jeans anthracite grey,1,22.9,35.9,Size,26-27,1
+variation,7686330-807,3435929076169,Basic mom jeans anthracite grey,1,22.9,35.9,Size,28-29,1
+variation,7686330-807,7974069787024,Basic mom jeans anthracite grey,1,22.9,35.9,Size,30,1
+variation,7686330-807,4273632108407,Basic mom jeans anthracite grey,1,22.9,35.9,Size,31-32,1
+variation,7686330-807,3027222961049,Basic mom jeans anthracite grey,1,22.9,35.9,Size,33,1
+variation,7686330-807,6675859611578,Basic mom jeans anthracite grey,1,22.9,35.9,Size,34-35,1
+variation,7686330-426,1593980178718,Basic mom jeans water blue,1,22.9,35.9,Size,23-24,1
+variation,7686330-426,2606332991740,Basic mom jeans water blue,1,22.9,35.9,Size,25,1
+variation,7686330-426,9986028090177,Basic mom jeans water blue,1,22.9,35.9,Size,26-27,1
+variation,7686330-426,4089417634113,Basic mom jeans water blue,1,22.9,35.9,Size,28-29,1
+variation,7686330-426,5377603399023,Basic mom jeans water blue,1,22.9,35.9,Size,30,1
+variation,7686330-426,9826832349599,Basic mom jeans water blue,1,22.9,35.9,Size,31-32,1
+variation,7686330-426,8639773877373,Basic mom jeans water blue,1,22.9,35.9,Size,33,1
+variation,7686330-426,1261037732038,Basic mom jeans water blue,1,22.9,35.9,Size,34-35,1
+variation,7686330-401,8020646468030,Basic mom jeans navy,1,22.9,35.9,Size,23-24,1
+variation,7686330-401,6221114295170,Basic mom jeans navy,1,22.9,35.9,Size,25,1
+variation,7686330-401,5987198204581,Basic mom jeans navy,1,22.9,35.9,Size,26-27,1
+variation,7686330-401,8995964010936,Basic mom jeans navy,1,22.9,35.9,Size,28-29,1
+variation,7686330-401,6943116314492,Basic mom jeans navy,1,22.9,35.9,Size,30,1
+variation,7686330-401,4624898852061,Basic mom jeans navy,1,22.9,35.9,Size,31-32,1
+variation,7686330-401,8652174517681,Basic mom jeans navy,1,22.9,35.9,Size,33,1
+variation,7686330-401,9085584350136,Basic mom jeans navy,1,22.9,35.9,Size,34-35,1
+variation,7686330-428,7053596677640,Basic mom jeans faded blue,1,22.9,35.9,Size,23-24,1
+variation,7686330-428,4506534209860,Basic mom jeans faded blue,1,22.9,35.9,Size,25,1
+variation,7686330-428,1664028138229,Basic mom jeans faded blue,1,22.9,35.9,Size,26-27,1
+variation,7686330-428,4776021404815,Basic mom jeans faded blue,1,22.9,35.9,Size,28-29,1
+variation,7686330-428,5184704783815,Basic mom jeans faded blue,1,22.9,35.9,Size,30,1
+variation,7686330-428,7102819855594,Basic mom jeans faded blue,1,22.9,35.9,Size,31-32,1
+variation,7686330-428,8926539249366,Basic mom jeans faded blue,1,22.9,35.9,Size,33,1
+variation,7686330-428,2529120539688,Basic mom jeans faded blue,1,22.9,35.9,Size,34-35,1
+variation,7693326-423,4530381710294,Blue striped boxer shorts pastel blue,1,29.9,39.9,Size,XS,1
+variation,7693326-423,7376658869765,Blue striped boxer shorts pastel blue,1,29.9,39.9,Size,S,1
+variation,7693326-423,4035634201296,Blue striped boxer shorts pastel blue,1,29.9,39.9,Size,M,1
+variation,7693326-423,4186064788871,Blue striped boxer shorts pastel blue,1,29.9,39.9,Size,L,1
+variation,7693326-423,8809975003631,Blue striped boxer shorts pastel blue,1,29.9,39.9,Size,XL,1
+variation,7693406-420,5418800627826,Fitted shorts with fold-over waist detail deep blue,1,27.9,35.9,Size,XS,1
+variation,7693406-420,7988654269993,Fitted shorts with fold-over waist detail deep blue,1,27.9,35.9,Size,S,1
+variation,7693406-420,1181072501922,Fitted shorts with fold-over waist detail deep blue,1,27.9,35.9,Size,M,1
+variation,7693406-420,1893486374159,Fitted shorts with fold-over waist detail deep blue,1,27.9,35.9,Size,L,1
+variation,7693406-420,6644828094469,Fitted shorts with fold-over waist detail deep blue,1,27.9,35.9,Size,XL,1
+variation,7693406-306,8020035743493,Fitted shorts with fold-over waist detail pale yellow,1,27.9,35.9,Size,XS,1
+variation,7693406-306,8122532857908,Fitted shorts with fold-over waist detail pale yellow,1,27.9,35.9,Size,S,1
+variation,7693406-306,5774147218728,Fitted shorts with fold-over waist detail pale yellow,1,27.9,35.9,Size,M,1
+variation,7693406-306,9629726807135,Fitted shorts with fold-over waist detail pale yellow,1,27.9,35.9,Size,L,1
+variation,7693406-306,2516202929717,Fitted shorts with fold-over waist detail pale yellow,1,27.9,35.9,Size,XL,1
+variation,7710322-711,2441546301029,Cropped jacket with back pleats sand,1,45.9,65.9,Size,XS,1
+variation,7710322-711,5789885188502,Cropped jacket with back pleats sand,1,45.9,65.9,Size,S,1
+variation,7710322-711,1220512825754,Cropped jacket with back pleats sand,1,45.9,65.9,Size,M,1
+variation,7710322-711,6816332579448,Cropped jacket with back pleats sand,1,45.9,65.9,Size,L,1
+variation,7710322-711,5625373203599,Cropped jacket with back pleats sand,1,45.9,65.9,Size,XL,1
+variation,7710322-505,2503664427978,Cropped jacket with back pleats khaki,1,45.9,65.9,Size,XS,1
+variation,7710322-505,3741458005256,Cropped jacket with back pleats khaki,1,45.9,65.9,Size,S,1
+variation,7710322-505,1276418193082,Cropped jacket with back pleats khaki,1,45.9,65.9,Size,M,1
+variation,7710322-505,3822841601370,Cropped jacket with back pleats khaki,1,45.9,65.9,Size,L,1
+variation,7710322-505,3953432237724,Cropped jacket with back pleats khaki,1,45.9,65.9,Size,XL,1
+variation,7803315-615,7960998885950,Striped triangle bikini top orange,1,27.9,35.9,Size,XS,1
+variation,7803315-615,6365524205668,Striped triangle bikini top orange,1,27.9,35.9,Size,S,1
+variation,7803315-615,7339721807850,Striped triangle bikini top orange,1,27.9,35.9,Size,M,1
+variation,7803315-615,1614098416626,Striped triangle bikini top orange,1,27.9,35.9,Size,L,1
+variation,7803315-615,8587355417573,Striped triangle bikini top orange,1,27.9,35.9,Size,XL,1
