@@ -1,19 +1,29 @@
 // nuxt.config.ts
 import pkg from "./package.json";
 
+const enableNuxtHub = process.env.NUXT_HUB === "true";
+
 export default defineNuxtConfig({
   // Shared hosting deployments (static files + PHP backend) do not have a Nitro/Node server.
   // Run as SPA to avoid requesting server payloads like `/_payload.json`.
   ssr: false,
   devtools: { enabled: false },
 
-  modules: ["@vueuse/nuxt", "@nuxt/ui", "@nuxt/image", "notivue/nuxt", "@nuxtjs/i18n", "@nuxthub/core"],
+  modules: [
+    "@vueuse/nuxt",
+    "@nuxt/ui",
+    "@nuxt/image",
+    "notivue/nuxt",
+    "@nuxtjs/i18n",
+    ...(enableNuxtHub ? ["@nuxthub/core"] : []),
+  ],
 
   i18n: {
     defaultLocale: "en",
     strategy: "prefix_except_default",
     // Locale files live in `i18n/locales/*`.
-    langDir: "i18n/locales",
+    dir: "i18n",
+    langDir: "locales",
     detectBrowserLanguage: {
       useCookie: true,
       cookieKey: "i18n_redirected",
@@ -60,16 +70,20 @@ export default defineNuxtConfig({
     prerender: { routes: ["/sitemap.xml", "/robots.txt"] },
   },
 
-  hub: {
-    cache: process.env.NODE_ENV === "production"
-      ? {
-          driver: "cloudflare-kv-binding",
-          binding: "CACHE",
-        }
-      : {
-          driver: "memory",
+  ...(enableNuxtHub
+    ? {
+        hub: {
+          cache: process.env.NODE_ENV === "production"
+            ? {
+                driver: "cloudflare-kv-binding",
+                binding: "CACHE",
+              }
+            : {
+                driver: "memory",
+              },
         },
-  },
+      }
+    : {}),
 
   experimental: {
     // Prevent the browser from requesting `/_payload.json` files on navigation/prefetch.

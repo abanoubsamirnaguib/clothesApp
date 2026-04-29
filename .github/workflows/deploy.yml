@@ -31,6 +31,7 @@ jobs:
       - name: Generate Nuxt static output
         env:
           LARAVEL_API_URL: ${{ vars.LARAVEL_API_URL }}
+          NUXT_HUB: "false"
         run: pnpm generate
 
       - name: Prepare deploy package
@@ -48,12 +49,16 @@ jobs:
             backend/ deploy-package/backend/
 
           # Copy Nuxt static output.
-          if [ -d "dist" ]; then
+          # Nuxt 4 `nuxt generate` outputs to `.output/public` by default.
+          if [ -d ".output/public" ]; then
+            cp -R .output/public/. deploy-package/dist/
+          elif [ -d "dist" ]; then
             cp -R dist/. deploy-package/dist/
           else
-            echo "Nuxt generate output folder not found (dist)."
+            echo "Nuxt generate output folder not found (.output/public or dist)."
             ls -la
             ls -la dist || true
+            ls -la .output || true
             exit 1
           fi
 
