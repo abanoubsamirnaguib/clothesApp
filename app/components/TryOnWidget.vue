@@ -16,7 +16,7 @@ const errorMsg = ref(null);
 
 const fetchResult = async () => {
   try {
-    const res = await $fetch('/api/tryon/result', {
+    const res = await $fetch(useApiUrl('/api/tryon/result'), {
       query: { product_id: String(props.productId) },
     });
     if (res?.status === 'completed' && res?.result_image_url) {
@@ -32,7 +32,7 @@ const fetchResult = async () => {
 
 const fetchEligibility = async () => {
   try {
-    eligibility.value = await $fetch('/api/tryon/eligibility', {
+    eligibility.value = await $fetch(useApiUrl('/api/tryon/eligibility'), {
       query: { product_id: String(props.productId) },
     });
   } catch (e) {
@@ -69,7 +69,7 @@ const runTryOn = async () => {
     fd.set('product_id', String(props.productId));
     fd.set('person_image', file.value);
 
-    const res = await $fetch('/api/tryon', { method: 'POST', body: fd });
+    const res = await $fetch(useApiUrl('/api/tryon'), { method: 'POST', body: fd });
     resultUrl.value = res?.result_image_url || null;
     garmentUrl.value = res?.garment_image_url || null;
     await refresh();

@@ -68,7 +68,7 @@ async function fetch() {
   isLoading.value = true;
 
   try {
-    const response = await $fetch('/api/products', {
+    const response = await $fetch(useApiUrl('/api/products'), {
       query: variables.value,
     });
     productsData.value.push(...response.data);

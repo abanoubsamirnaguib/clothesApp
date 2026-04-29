@@ -22,7 +22,9 @@ useSeoMeta({
 });
 
 onMounted(() => {
-  $fetch('/api/categories').then(response => (categoriesData.value = response.data.filter(category => category.products_count > 0)));
+  $fetch(useApiUrl('/api/categories')).then(
+    response => (categoriesData.value = response.data.filter(category => category.products_count > 0))
+  );
 });
 
 const categories = computed(() => categoriesData.value);

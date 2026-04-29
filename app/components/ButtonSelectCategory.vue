@@ -3,7 +3,7 @@
 const categoriesData = ref([]);
 
 onMounted(async () => {
-  const response = await $fetch('/api/categories');
+  const response = await $fetch(useApiUrl('/api/categories'));
   categoriesData.value = response.data.filter(category => category.products_count > 0);
 });
 

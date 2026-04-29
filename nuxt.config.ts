@@ -2,6 +2,9 @@
 import pkg from "./package.json";
 
 export default defineNuxtConfig({
+  // Shared hosting deployments (static files + PHP backend) do not have a Nitro/Node server.
+  // Run as SPA to avoid requesting server payloads like `/_payload.json`.
+  ssr: false,
   devtools: { enabled: false },
 
   modules: ["@vueuse/nuxt", "@nuxt/ui", "@nuxt/image", "notivue/nuxt", "@nuxtjs/i18n", "@nuxthub/core"],
@@ -9,7 +12,8 @@ export default defineNuxtConfig({
   i18n: {
     defaultLocale: "en",
     strategy: "prefix_except_default",
-    langDir: "locales",
+    // Locale files live in `i18n/locales/*`.
+    langDir: "i18n/locales",
     detectBrowserLanguage: {
       useCookie: true,
       cookieKey: "i18n_redirected",
@@ -40,6 +44,8 @@ export default defineNuxtConfig({
     },
     public: {
       version: pkg.version,
+      // Expose API base to the browser for static deployments.
+      laravelApiUrl: process.env.LARAVEL_API_URL || "",
     },
   },
 
@@ -50,7 +56,7 @@ export default defineNuxtConfig({
   },
 
   nitro: {
-    preset: "cloudflare_pages",
+    preset: "static",
     prerender: { routes: ["/sitemap.xml", "/robots.txt"] },
   },
 
@@ -63,6 +69,11 @@ export default defineNuxtConfig({
       : {
           driver: "memory",
         },
+  },
+
+  experimental: {
+    // Prevent the browser from requesting `/_payload.json` files on navigation/prefetch.
+    payloadExtraction: false,
   },
 
   compatibilityDate: "2025-01-01",

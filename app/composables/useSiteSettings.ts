@@ -16,7 +16,7 @@ export async function useSiteSettings() {
   }));
 
   // If API URL isn't configured, keep defaults.
-  const base = (config.laravelApiUrl as string) || '';
+  const base = (config.public?.laravelApiUrl as string) || '';
   if (!base) return settings;
 
   // During SSG/prerender (build time), we might not have the backend available.

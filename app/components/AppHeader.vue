@@ -18,7 +18,7 @@ const search = () => {
 
 async function fetch() {
   try {
-    const response = await $fetch('/api/search', {
+    const response = await $fetch(useApiUrl('/api/search'), {
       query: { search: searchQuery.value },
     });
     searchResults.value = response.products.nodes;

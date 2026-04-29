@@ -28,10 +28,10 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Build Nuxt static output
+      - name: Generate Nuxt static output
         env:
           LARAVEL_API_URL: ${{ vars.LARAVEL_API_URL }}
-        run: pnpm build
+        run: pnpm generate
 
       - name: Prepare deploy package
         run: |
@@ -47,16 +47,13 @@ jobs:
             --exclude ".env.*" \
             backend/ deploy-package/backend/
 
-          # Copy Nuxt build output.
-          if [ -d ".output/public" ]; then
-            cp -R .output/public/. deploy-package/dist/
-          elif [ -d "dist" ]; then
+          # Copy Nuxt static output.
+          if [ -d "dist" ]; then
             cp -R dist/. deploy-package/dist/
           else
-            echo "Nuxt build output folder not found (.output/public or dist)."
+            echo "Nuxt generate output folder not found (dist)."
             ls -la
             ls -la dist || true
-            ls -la .output || true
             exit 1
           fi
 
