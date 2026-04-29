@@ -30,6 +30,7 @@ export default defineNuxtConfig({
 
   i18n: {
     defaultLocale: "en",
+    fallbackLocale: "en",
     strategy: "prefix_except_default",
     // Bundle messages to avoid runtime lazy-loading failures on shared hosting.
     lazy: false,
@@ -39,6 +40,7 @@ export default defineNuxtConfig({
       cookieKey: "i18n_redirected",
       redirectOn: "root",
       alwaysRedirect: true,
+      fallbackLocale: "en",
     },
     locales: [
       { code: "en", iso: "en-GB", name: "🇬🇧 English" },

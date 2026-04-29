@@ -9,9 +9,14 @@ export default defineI18nConfig(() => ({
   fallbackLocale: "en",
   messages: {
     en,
+    "en-GB": en,
+    "en-US": en,
     nb,
+    "nb-NO": nb,
     nl,
+    "nl-NL": nl,
     de,
+    "de-DE": de,
   },
 }));
 
