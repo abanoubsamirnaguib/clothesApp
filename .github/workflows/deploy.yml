@@ -33,6 +33,33 @@ jobs:
           LARAVEL_API_URL: ${{ vars.LARAVEL_API_URL }}
         run: pnpm build
 
+      - name: Prepare deploy package
+        run: |
+          rm -rf deploy-package
+          mkdir -p deploy-package/backend deploy-package/dist
+
+          # Copy Laravel backend code only (exclude env, vendor, node_modules).
+          rsync -av \
+            --exclude ".git" \
+            --exclude "vendor" \
+            --exclude "node_modules" \
+            --exclude ".env" \
+            --exclude ".env.*" \
+            backend/ deploy-package/backend/
+
+          # Copy Nuxt build output.
+          if [ -d ".output/public" ]; then
+            cp -R .output/public/. deploy-package/dist/
+          elif [ -d "dist" ]; then
+            cp -R dist/. deploy-package/dist/
+          else
+            echo "Nuxt build output folder not found (.output/public or dist)."
+            ls -la
+            ls -la dist || true
+            ls -la .output || true
+            exit 1
+          fi
+
       - name: Push deploy branch
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

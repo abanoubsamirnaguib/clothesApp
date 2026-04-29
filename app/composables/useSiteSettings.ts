@@ -19,15 +19,24 @@ export async function useSiteSettings() {
   const base = (config.laravelApiUrl as string) || '';
   if (!base) return settings;
 
+  // During SSG/prerender (build time), we might not have the backend available.
+  // Fetch settings on the client only to avoid prerender failures.
+  if (!process.client) return settings;
+
   // Fetch once per app instance.
   if (settings.value?.store_name && settings.value.store_name !== 'NuxtCommerce') return settings;
 
-  const { data } = await useFetch<SiteSettings>(`${base.replace(/\/$/, '')}/api/settings`, {
-    key: 'site-settings-fetch',
-  });
+  try {
+    const { data } = await useFetch<SiteSettings>(`${base.replace(/\/$/, '')}/api/settings`, {
+      key: 'site-settings-fetch',
+    });
 
-  if (data.value?.store_name) {
-    settings.value = data.value;
+    if (data.value?.store_name) {
+      settings.value = data.value;
+    }
+  } catch (error) {
+    // If the backend is down/misconfigured, keep defaults and let the app load.
+    console.warn('[useSiteSettings] Failed to fetch settings:', (error as Error)?.message);
   }
 
   return settings;
