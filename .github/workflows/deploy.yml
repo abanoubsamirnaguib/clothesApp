@@ -29,20 +29,9 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: Build Nuxt static output
-        run: pnpm generate
-
-      - name: Prepare deploy files
-        run: |
-          rm -rf deploy-package
-          mkdir -p deploy-package/backend
-          rsync -av \
-            --exclude ".git" \
-            --exclude "vendor" \
-            --exclude "node_modules" \
-            --exclude ".env" \
-            --exclude ".env.*" \
-            backend/ deploy-package/backend/
-          cp -R dist deploy-package/dist
+        env:
+          LARAVEL_API_URL: ${{ vars.LARAVEL_API_URL }}
+        run: pnpm build
 
       - name: Push deploy branch
         env:
