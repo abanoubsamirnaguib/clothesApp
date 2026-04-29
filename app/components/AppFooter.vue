@@ -27,7 +27,7 @@ const chooseLocale = code => {
   <footer class="my-5 flex items-center justify-between gap-3 px-5 text-[13px] font-semibold text-secondary-text dark:text-secondary-text-d">
     <div class="truncate">
       <a class="transition-all hover:text-black hover:dark:text-neutral-100" href="https://github.com/zackha/nuxtcommerce" target="_blank">
-        NuxtCommerce v{{ config.public.version }}
+        NuxtCommerce v{{ config.public.version }}<span v-if="config.public.buildId" class="opacity-60"> ({{ config.public.buildId }})</span>
       </a>
       —
       {{ $t('footer.developed_by_author') }}

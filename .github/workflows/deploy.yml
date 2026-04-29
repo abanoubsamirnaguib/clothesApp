@@ -31,7 +31,10 @@ jobs:
       - name: Generate Nuxt static output
         env:
           LARAVEL_API_URL: ${{ vars.LARAVEL_API_URL }}
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+          HF_TRYON_SPACE: ${{ vars.HF_TRYON_SPACE }}
           NUXT_HUB: "false"
+          NUXT_PUBLIC_BUILD_ID: ${{ github.sha }}
         run: pnpm generate
 
       - name: Prepare deploy package

@@ -66,6 +66,7 @@ export default defineNuxtConfig({
     },
     public: {
       version: pkg.version,
+      buildId: process.env.NUXT_PUBLIC_BUILD_ID || "",
       // Expose API base to the browser for static deployments.
       laravelApiUrl: process.env.LARAVEL_API_URL || "",
     },
