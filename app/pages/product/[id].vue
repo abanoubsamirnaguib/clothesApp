@@ -23,11 +23,22 @@ const productResult = ref(null);
 const selectedVariation = ref(null);
 const relatedProducts = ref([]);
 
-onMounted(() => {
-  $fetch(useApiUrl(`/api/products/${encodeURIComponent(slug.value)}`)).then(data => {
-    productResult.value = data.data;
-    relatedProducts.value = data.related?.data || [];
-  });
+const normalizeRelated = (payload) => {
+  if (Array.isArray(payload)) return payload;
+  if (Array.isArray(payload?.data)) return payload.data;
+  return [];
+};
+
+const fetchProduct = async () => {
+  const data = await $fetch(useApiUrl(`/api/products/${encodeURIComponent(slug.value)}`));
+  productResult.value = data?.data || null;
+  relatedProducts.value = normalizeRelated(data?.related);
+};
+
+onMounted(fetchProduct);
+
+watch(slug, () => {
+  fetchProduct();
 });
 
 const product = computed(() => productResult.value);
