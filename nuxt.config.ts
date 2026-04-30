@@ -13,6 +13,7 @@ export default defineNuxtConfig({
     "@vueuse/nuxt",
     "@nuxt/ui",
     "@nuxt/image",
+    "@vite-pwa/nuxt",
     "notivue/nuxt",
     "@nuxt/icon",
     ...(enableNuxtHub ? ["@nuxthub/core"] : []),
@@ -34,6 +35,62 @@ export default defineNuxtConfig({
   },
 
   css: ["notivue/notification.css", "notivue/animations.css"],
+
+  pwa: {
+    registerType: "autoUpdate",
+    includeAssets: ["favicon.ico", "logo.svg", "social-card.jpg"],
+    manifest: {
+      name: "clothes App",
+      short_name: "clothes App",
+      description: pkg.description,
+      theme_color: "#e60022",
+      background_color: "#ffffff",
+      display: "standalone",
+      start_url: "/",
+      scope: "/",
+      icons: [
+        {
+          src: "/favicon.ico",
+          sizes: "64x64 32x32 24x24 16x16",
+          type: "image/x-icon",
+        },
+        {
+          src: "/logo.svg",
+          sizes: "any",
+          type: "image/svg+xml",
+          purpose: "any maskable",
+        },
+      ],
+    },
+    workbox: {
+      navigateFallback: "/",
+      globPatterns: ["**/*.{js,css,html,png,svg,ico,txt,woff2}"],
+      runtimeCaching: [
+        {
+          urlPattern: /\.(?:png|jpg|jpeg|svg|gif|webp)$/i,
+          handler: "CacheFirst",
+          options: {
+            cacheName: "images",
+            expiration: {
+              maxEntries: 100,
+              maxAgeSeconds: 60 * 60 * 24 * 30,
+            },
+          },
+        },
+        {
+          urlPattern: /\/_nuxt\//,
+          handler: "CacheFirst",
+          options: {
+            cacheName: "nuxt-assets",
+            expiration: {
+              maxEntries: 200,
+              maxAgeSeconds: 60 * 60 * 24 * 30,
+            },
+          },
+        },
+      ],
+    },
+  },
 
   runtimeConfig: {
     laravelApiUrl: process.env.LARAVEL_API_URL || "",
